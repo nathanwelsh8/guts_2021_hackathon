@@ -25,5 +25,5 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ]
+, "pages/login.jsx", "pages/signup.jsx", "pages/me.jsx", "pages/logout.jsx", "pages/about.jsx", "pages/index.jsx"  ]
 }

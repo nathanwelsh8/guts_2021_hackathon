@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
-import { useAuth } from "../auth";
+import { useAuth } from "../lib/auth";
 
-const Ping = (): React.ReactElement => {
+const Ping = () => {
   const { loading, getToken, isAuthenticated } = useAuth();
-  const [awaitingResponse, setAwaitingResponse] = useState<boolean>(false);
-  const [apiResponse, setAPIResponse] = useState<string>("");
+  const [awaitingResponse, setAwaitingResponse] = useState(false);
+  const [apiResponse, setAPIResponse] = useState("");
 
   const handleClick = async () => {
     setAwaitingResponse(true);

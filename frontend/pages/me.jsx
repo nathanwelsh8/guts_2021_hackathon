@@ -1,7 +1,7 @@
 import Layout from "../components/Layout";
-import { useAuth } from "../auth";
+import { useAuth } from "../lib/auth";
 
-const Me: React.SFC = (): React.ReactElement => {
+const Me = () => {
   const { loading, user } = useAuth();
   if (loading) {
     return (

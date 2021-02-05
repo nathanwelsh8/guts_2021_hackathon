@@ -13,12 +13,14 @@
   "license": "ISC",
   "dependencies": {
     "classnames": "^2.2.6",
+    "mapbox-gl": "^2.1.0",
     "next": "10.0.3",
     "next-seo": "^4.17.0",
     "react": "^17.0.1",
     "react-aria": "^3.1.1",
     "react-dom": "^17.0.1",
     "react-hook-form": "^6.15.1",
+    "react-mapbox-gl": "^5.1.1",
     "react-merge-refs": "^1.1.0",
     "swr": "0.3.9",
     "tailwindcss": "^2.0.1"
