@@ -1,5 +1,5 @@
 :root {
-  /* --primary: #000000;
+  --primary: #000000;
   --primary-2: #111;
   --secondary: #ffffff;
   --secondary-2: #f1f3f5;
@@ -21,31 +21,7 @@
   --accents-6: #dee2e6;
   --accents-7: #e9ecef;
   --accents-8: #f1f3f5;
-  --accents-9: #f8f9fa; */
-
-  --primary: #306060;
-  --primary-2: #508080;
-  --secondary: #ffffff;
-  --secondary-2: #f1f3f5;
-  --hover: rgba(48, 96, 96, 0.075);
-  --hover-1: rgba(48, 96, 96, 0.15);
-  --hover-2: rgba(48, 96, 96, 0.25);
-  --selection: var(--purple);
-
-  --text-base: white;
-  --text-primary: white;
-  --text-secondary: black;
-  
-  --accents-0: #091212;
-  --accents-1: #162c2c;
-  --accents-2: #495057;
-  --accents-3: #868e96;
-  --accents-4: #adb5bd;
-  --accents-5: #ced4da;
-  --accents-6: #dee2e6;
-  --accents-7: #a8d3d3;
-  --accents-8: #cfe7e7;
-  --accents-9: #f6fbfb;
+  --accents-9: #f8f9fa;
 
   --cyan: #22b8cf;
   --green: #37b679;
