@@ -2,9 +2,9 @@ import { useState } from "react";
 import Link from "next/link";
 import Router from "next/router";
 import Layout from "../components/Layout";
-import { useAuth } from "../auth";
+import { useAuth } from "../lib/auth";
 
-const loginApi = async (username: string, password: string): Promise<void> => {
+const loginApi = async (username, password) => {
   const resp = await fetch("/api/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -16,15 +16,15 @@ const loginApi = async (username: string, password: string): Promise<void> => {
   Router.push("/me");
 };
 
-const Login: React.SFC = (): React.ReactElement => {
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [errorMessage, setErrorMessage] = useState<string>("");
+const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const { loading, isAuthenticated, login } = useAuth();
 
   const handleSubmit = async (
-    event: React.FormEvent<HTMLFormElement>
-  ): Promise<void> => {
+    event
+  ) => {
     event.preventDefault();
     setErrorMessage("");
     try {
@@ -60,7 +60,7 @@ const Login: React.SFC = (): React.ReactElement => {
               id="username"
               name="username"
               value={username}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e) =>
                 setUsername(e.target.value)
               }
             />
@@ -82,7 +82,7 @@ const Login: React.SFC = (): React.ReactElement => {
               id="password"
               name="password"
               value={password}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              onChange={(e) =>
                 setPassword(e.target.value)
               }
             />

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { useAuth } from "../auth";
+import { useAuth } from "../lib/auth";
 
-const Nav: React.SFC<{}> = (): React.ReactElement => {
+const Nav = () => {
   const { isAuthenticated } = useAuth();
   return (
     <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">

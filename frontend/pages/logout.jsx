@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { useAuth } from "../auth";
+import { useAuth } from "../lib/auth";
 import Layout from "../components/Layout";
 
-const Logout = (): React.ReactElement => {
+const Logout = () => {
   const { isAuthenticated, logout } = useAuth();
 
   useEffect(() => {

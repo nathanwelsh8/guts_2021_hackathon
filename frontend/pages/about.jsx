@@ -1,6 +1,6 @@
 import Layout from "../components/Layout";
 
-const About = (): React.ReactElement => {
+const About = () => {
   return (
     <Layout>
       <h1 className="text-xl pt-3 pb-5">About page goes here</h1>

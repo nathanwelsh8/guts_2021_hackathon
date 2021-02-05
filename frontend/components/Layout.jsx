@@ -1,6 +1,6 @@
 import Nav from "./Nav";
 
-const Layout = ({children}): React.ReactElement => {
+const Layout = ({children}) => {
   return (
     <div>
       <Nav />
