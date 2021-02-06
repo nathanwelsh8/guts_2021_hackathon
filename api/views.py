@@ -17,6 +17,7 @@ class Profile(generics.RetrieveAPIView):
 
 class EditCharityAccountView(View):
     'handle charity edit views'
+    permission_classes = (IsAuthenticated,)
 
     def post(self,request):
         response = HttpResponse(content_type="application/json")
