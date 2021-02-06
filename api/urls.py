@@ -20,7 +20,9 @@ urlpatterns = [
     path("ping/", views.Ping.as_view(), name="ping"),
     path("admin/", admin.site.urls),
     path("editcharityaccount/", views.EditCharityAccountView.as_view(), name="editcharityaccount"),
-    path("createcharityaccount", views.CreateCharityAccountView.as_view(), name="createcharityaccount")
+    path("createcharityaccount/", views.CreateCharityAccountView.as_view(), name="createcharityaccount"),
+    path("charitylist/", views.CharityListView.as_view(), name="charitylist"),
+    path("charity/", views.charityView.as_view(), name="viewcharity")
 ]
 
 urlpatterns += [
