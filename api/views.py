@@ -2,6 +2,7 @@ from api.models import CharityAccount, User
 from django.utils import timezone
 from django.views import View
 from django.core.serializers import serialize
+from django.contrib.auth import authenticate, login, logout
 from rest_framework import generics, response
 from rest_framework.permissions import IsAuthenticated
 from django.http import JsonResponse, HttpResponse
@@ -20,29 +21,35 @@ class EditCharityAccountView(View):
 
     def post(self,request):
         response = HttpResponse(content_type="application/json")
-        response['message'] = ""
+        
+        # check edit_charity in post request
+        charity_account = None
+        try:
+            charity_account = CharityAccount.objects.get(email = request.POST.get("email"))
+        except Exception as e:
+            print(e)
+            response.status_code = 404
+            response.content = serialize('json', {"Error":"User not found"})
+        finally:
+            if charity_account:
+                user = authenticate(username=charity_account.user.username, password= request.POST.get("password"))
+                if user is not None:
+                    charity_account.charityname = request.POST.get("charityname")
+                    charity_account.phone = request.post.get("phone")
 
-        # check user making request is authenticated
-        if not request.user.is_authenticated:
-            response['message'] = "Authorisation Required"
-            response.status_code = 401
-        else:
-            #check edit_charity in post request
-            if request.POST.get("edit_charity"):
-                user = None
-                try:
-                    user = CharityAccount.objects.get(email = request.POST.get("email"))
-                except Exception as e:
-                    print(e)
-                    response.status_code = 404
-                    response['message'] = "User not found"
-                finally:
-                    if user:
-                        user.charityname = request.objects.get("charityname")
-                        user.phone = request.objects.get("phone")
-                        user.save()
-                        response.status_code = 200
-                        response['message'] = "User Updated"
+                    # update location info
+                    charity_account.address.postcode = request.POST.get("postcode")
+                    geolocation = request.POST.get("geolocation")
+                    charity_account.address.longitude = geolocation[0]
+                    charity_account.address.latitude = geolocation[1]
+
+                    charity_account.save()
+                    response.status_code = 200
+                    response.content = serialize('json', {"Success":"User details updated"})
+                else:
+                    response.status_code = 401
+                    response.content = serialize('json', {"Error":"Invalid Credentials"})
+
         return response
 
     def get(self, request):
@@ -68,6 +75,22 @@ class EditCharityAccountView(View):
                 response['message'] = "Account does not exist"
         return response
 
+class CreateCharityAccountView(View):
+
+    def get(self,request):
+        response = HttpResponse(content_type="application/json")
+        response.status_code = 400
+        response.content = serialize('json', {"Error":"Invalid Request"})
+        return 
+    
+    def post(self, request):
+        response = HttpResponse(content_type="application/json")
+        email = request.POST.get("email","")
+        username = email[:email.find("@")]
+        password = request.POST.get("password")
+        charityname = request.POST.get("name","")
+        phone = request.POST.get("phone","")
+        
 
 
 class Ping(generics.GenericAPIView):

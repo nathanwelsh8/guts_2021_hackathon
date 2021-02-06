@@ -19,7 +19,8 @@ urlpatterns = [
     path("token/logout/", jwt_views.Logout.as_view(), name="logout"),
     path("ping/", views.Ping.as_view(), name="ping"),
     path("admin/", admin.site.urls),
-    path("charityaccount/", views.EditCharityAccountView.as_view(), name="charityaccount")
+    path("editcharityaccount/", views.EditCharityAccountView.as_view(), name="editcharityaccount"),
+    path("createcharityaccount", views.CreateCharityAccountView.as_view(), name="createcharityaccount")
 ]
 
 urlpatterns += [
