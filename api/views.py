@@ -10,6 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.http import JsonResponse, HttpResponse
 from app.settings import EMAIL_HOST_USER
 
+
 from . import serializers
 
 class Profile(generics.RetrieveAPIView):
@@ -23,6 +24,7 @@ class EditCharityAccountView(View):
     'handle charity edit views'
 
     def post(self,request):
+		permission_classes = (IsAuthenticated,)
         response = HttpResponse(content_type="application/json")
         
         # check edit_charity in post request
@@ -57,8 +59,7 @@ class EditCharityAccountView(View):
                 else:
                     response.status_code = 401
                     response.content =  {"error":"Invalid Credentials"}
-
-        return response
+		return response
 
     def get(self, request):
         # return charity data

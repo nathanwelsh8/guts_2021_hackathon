@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.db import router
 from django.urls import include, path
 from rest_framework import routers
+from rest_framework.authtoken.views import obtain_auth_token
 from . import views
 from . import jwt_views
 
@@ -24,6 +25,8 @@ urlpatterns = [
     path("charitylist/", views.CharityListView.as_view(), name="charitylist"),
     path("charity/", views.charityView.as_view(), name="viewcharity"),
     path("email/", views.TestEmail.as_view(), name="email"),
+    path("charityaccount/", views.EditCharityAccountView.as_view(), name="charityaccount"),
+    path('token-auth/', obtain_auth_token, name='api_token_auth'), 
 ]
 
 urlpatterns += [

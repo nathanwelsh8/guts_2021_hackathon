@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@modulz/radix-icons": "^4.0.0",
+    "@radix-ui/react-icons": "^1.0.1",
     "classnames": "^2.2.6",
     "mapbox-gl": "^2.1.0",
     "next": "10.0.3",
