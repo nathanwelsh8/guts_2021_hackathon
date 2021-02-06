@@ -43,42 +43,40 @@ const Login = () => {
 
   return (
     <Layout>
-      <form className="w-full max-w-sm pt-4" onSubmit={handleSubmit}>
-        <div className="md:flex md:items-center mb-6">
-          <div className="md:w-1/3">
+      <form className="w-full mx-auto flex flex-col max-w-sm pt-4" onSubmit={handleSubmit}>
+        <div className="mb-16 flex flex-col">
+            <h1 className="text-4xl text-center text-white font-extrabold">
+              Foodbank login
+            </h1>
+        </div>
+        <div className="mb-6 flex flex-col">
             <label
-              className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
-              htmlFor="username"
+              className="block text-accents-7 font-bold mb-3 pr-4"
+              htmlFor="email"
             >
-              Username
+              Email
             </label>
-          </div>
-          <div className="md:w-2/3">
             <input
               type="text"
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="username"
-              name="username"
+              className="bg-accents-1 appearance-none border-2 border-accents-1 rounded w-full py-2 px-4 text- leading-tight focus:outline-none focus:bg-accents-2 focus:border-accents-4"
+              id="email"
+              name="email"
               value={username}
               onChange={(e) =>
                 setUsername(e.target.value)
               }
             />
-          </div>
         </div>
-        <div className="md:flex md:items-center mb-6">
-          <div className="md:w-1/3">
+        <div className="mb-6 flex flex-col">
             <label
-              className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4"
+              className="block text-accents-7 font-bold mb-3 pr-4"
               htmlFor="password"
             >
               Password
             </label>
-          </div>
-          <div className="md:w-2/3">
             <input
               type="password"
-              className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              className="bg-accents-1 appearance-none border-2 border-accents-1 rounded w-full py-2 px-4 text- leading-tight focus:outline-none focus:bg-accents-2 focus:border-accents-4"
               id="password"
               name="password"
               value={password}
@@ -86,34 +84,28 @@ const Login = () => {
                 setPassword(e.target.value)
               }
             />
-          </div>
         </div>
-        <div className="md:flex md:items-center">
-          <div className="md:w-1/3"></div>
-          <div className="md:w-2/3">
+        <div className="flex justify-center mt-6">
             <button
-              className="shadow bg-teal-500 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+              className="shadow bg-accents-0 hover:bg-accents-1 transition-colours duration-200 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-lg"
               type="submit"
             >
               Login
             </button>
-          </div>
         </div>
         {errorMessage ? (
-          <div className="md:flex md:items-center">
-            <div className="md:w-1/3"></div>
-            <div className="md:w-2/3 pt-4">
-              <p className="text-red-400">Error: {errorMessage}</p>
+          <div className="flex justify-center">
+            <div className="pt-8">
+              <p className="text-center text-red-400">Error: {errorMessage}</p>
             </div>
           </div>
         ) : null}
-        <div className="md:flex md:items-center">
-          <div className="md:w-1/3"></div>
-          <div className="md:w-2/3 pt-4">
-            <p className="text-gray-700">
-              No account?{" "}
+        <div className="flex justify-center">
+          <div className="pt-8">
+            <p className="text-center text-accents-6">
+              Is your foodbank still not registered?<br />
               <Link href="/signup">
-                <a>Sign up</a>
+                <a className="font-bold">Sign up</a>
               </Link>
               .
             </p>
