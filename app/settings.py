@@ -24,7 +24,7 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG")
 ON_SERVER = env("ON_SERVER", default=True)
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", "localhost","127.0.0.1"]
 CORS_ALLOW_CREDENTIALS = True
 if ON_SERVER:
     CORS_ORIGIN_REGEX_WHITELIST = env.list(
@@ -131,7 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-STATIC_URL = "/static/"
+STATIC_URL = "/staticfiles/"
 
 if ON_SERVER:
     STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
