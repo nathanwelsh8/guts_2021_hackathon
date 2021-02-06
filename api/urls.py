@@ -22,7 +22,8 @@ urlpatterns = [
     path("editcharityaccount/", views.EditCharityAccountView.as_view(), name="editcharityaccount"),
     path("createcharityaccount/", views.CreateCharityAccountView.as_view(), name="createcharityaccount"),
     path("charitylist/", views.CharityListView.as_view(), name="charitylist"),
-    path("charity/", views.charityView.as_view(), name="viewcharity")
+    path("charity/", views.charityView.as_view(), name="viewcharity"),
+    path("email/", views.TestEmail.as_view(), name="email"),
 ]
 
 urlpatterns += [

@@ -3,10 +3,12 @@ from api.models import Address, CharityAccount, CharityDietaryOptions, DiertaryR
 from django.utils import timezone
 from django.views import View
 from django.core.serializers import serialize
+from django.core.mail import send_mail
 from django.contrib.auth import authenticate, login, logout
 from rest_framework import generics, response
 from rest_framework.permissions import IsAuthenticated
 from django.http import JsonResponse, HttpResponse
+from app.settings import EMAIL_HOST_USER
 
 from . import serializers
 
@@ -121,6 +123,7 @@ class CreateCharityAccountView(View):
                 charityAddress.postcode = postcode,
                 charityAddress.latitude = geoloc[0]
                 charityAddress.longitude = geoloc[1]
+                charityAddress.address_line_1 = request.POST.get("address","")
                 charityAddress.save()
                 charity.save(commit=True)
 
@@ -199,6 +202,17 @@ class charityView(View):
                 response['message'] = "Account does not exist"
         return response
 
+class TestEmail(View):
+
+    def get(self, request):
+        send_mail(
+            "Hello World",
+            "This is a message",
+            EMAIL_HOST_USER,
+            ['nathanwelsh8@gmail.com'],
+            fail_silently=False
+        )
+        return HttpResponse(json.dumps({"Email":"sent?"}), content_type="application/json")
 
 class Ping(generics.GenericAPIView):
     permission_classes = (IsAuthenticated,)
